@@ -1,7 +1,5 @@
 require('dotenv').config()
 
-console.log(`${process.env.SENTRY_PROJECT}@${process.env.npm_package_version}`)
-
 export default {
   mode: 'universal',
   /*
@@ -59,8 +57,8 @@ export default {
 
   sentry: {
     config: {
-      release: `${process.env.SENTRY_PROJECT}@${process.env.npm_package_version}`,
+      release: process.env.SENTRY_RELEASE,
     },
-    publishRelease: true,
+    publishRelease: !!process.env.SENTRY_RELEASE,
   },
 }

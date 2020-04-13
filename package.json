@@ -8,6 +8,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "build:dev": "NODE_ENV=development nuxt build",
+    "release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); nuxt build)",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
