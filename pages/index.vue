@@ -20,6 +20,11 @@
           GitHub
         </a>
       </div>
+
+      <hr />
+      <button @click="() => showError('at button')">button</button>
+      <button @click="() => throwError('at throw error button')">throw</button>
+      <button @click="() => logError('at button')">console</button>
     </div>
   </div>
 </template>
@@ -29,8 +34,19 @@ import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
-    Logo
-  }
+    Logo,
+  },
+  methods: {
+    showError(msg) {
+      this.$sentry.captureException(new Error(msg))
+    },
+    logError(msg) {
+      console.error(msg)
+    },
+    throwError(msg) {
+      throw new Error(msg)
+    },
+  },
 }
 </script>
 
